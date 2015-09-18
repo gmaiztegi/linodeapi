@@ -328,7 +328,7 @@ coreoscfg=$($LINODEAPI -c linode.config.create -d LINODEID=$linodeid\&Label=Core
 
 ## Boot Installation
 log "Disks created, re-booting."
-$LINODEAPI -c linode.boot -d LINODEID=$linodeid\&ConfigID=$instcfg 1>/dev/null
+$LINODEAPI -c linode.boot -d LINODEID=$linodeid\&ConfigID=$instcfg 1>/dev/null  
 
 # Waiting for system to boot
 #sleep 5 # add this sleep in case linodeapi has some lag and system is still up, but shutting down...
@@ -342,7 +342,7 @@ log "Cloud config successfully copied to the target system. Provided cloud confi
 log "Installing CoreOS..."
 # Send CoreOS installation script, proceeding with CoreOS installation...
 sshpass -p $PASSWD ssh -o StrictHostKeyChecking=no -l root $publicip "
-  curl -s https://raw.githubusercontent.com/million12/linodeapi/master/prepare_coreos_boot.sh -o /root/prepare_coreos_boot.sh && \
+  curl -s https://raw.githubusercontent.com/vmatekole/linodeapi/master/prepare_coreos_boot.sh -o /root/prepare_coreos_boot.sh && \
   chmod +x /root/prepare_coreos_boot.sh && \
   echo 'STAGE 1 COMPLETED.' && \
   /root/prepare_coreos_boot.sh $publicip $privateip $gateway_net $TOKEN && \
