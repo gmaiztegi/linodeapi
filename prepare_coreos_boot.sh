@@ -18,7 +18,7 @@ sed -i 's|$gateway|'$3'|' $HOME/cloud-config.yaml
 
 wget https://raw.githubusercontent.com/coreos/init/master/bin/coreos-install
 chmod +x coreos-install
-./coreos-install -d /dev/xvdb -C stable -c $HOME/cloud-config.yaml
+./coreos-install -d /dev/sda -C stable -c $HOME/cloud-config.yaml
 
 mkdir /mnt/core-boot
 rm -rf /boot/grub
