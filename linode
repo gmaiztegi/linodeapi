@@ -342,8 +342,8 @@ log "Cloud config successfully copied to the target system. Provided cloud confi
 log "Installing CoreOS..."
 # Send CoreOS installation script, proceeding with CoreOS installation...
 sshpass -p $PASSWD ssh -o StrictHostKeyChecking=no -l root $publicip "
-  curl -s https://raw.githubusercontent.com/vmatekole/linodeapi/master/prepare_coreos_boot.sh -o /root/prepare_coreos_boot.sh && \
   apt-get install -y curl && \
+  curl -s https://raw.githubusercontent.com/gmaiztegi/linodeapi/master/prepare_coreos_boot.sh -o /root/prepare_coreos_boot.sh && \
   chmod +x /root/prepare_coreos_boot.sh && \
   echo 'STAGE 1 COMPLETED.' && \
   /root/prepare_coreos_boot.sh $publicip $privateip $gateway_net $TOKEN && \
